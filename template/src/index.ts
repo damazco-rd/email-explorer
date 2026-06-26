@@ -12,6 +12,9 @@ export default EmailExplorer({
 		enabled: true,
 		// registerEnabled not specified = smart mode
 	},
+	accountRecovery: {
+		fromEmail: 'noreply@damaz.co',
+	},
 });
 
 // OTHER CONFIGURATION OPTIONS:
