@@ -1,9 +1,9 @@
-import { EmailMessage } from "cloudflare:email";
 import { contentJson, fromHono, OpenAPIRoute } from "chanfana";
 import { type Context, Hono } from "hono";
 import { cors } from "hono/cors";
 import PostalMime from "postal-mime";
 import { z } from "zod";
+import { createEmailClient } from "./email-client";
 import { buildMimeMessage } from "./mime-builder";
 import {
 	GetMe,
@@ -546,10 +546,8 @@ class PostEmail extends OpenAPIRoute {
 			references: references,
 		});
 
-		const message = new EmailMessage(from, toStr, mimeMessage);
-
 		try {
-			await c.env.SEND_EMAIL.send(message);
+			await createEmailClient(c.env).send({ from, to: toStr, mimeMessage });
 		} catch (e) {
 			return c.json({ error: (e as Error).message }, 500);
 		}
@@ -1394,14 +1392,12 @@ This link will expire in 1 hour.
 If you didn't request this, you can safely ignore this email.`,
 		});
 
-		const emailMessage = new EmailMessage(
-			c.env.config.accountRecovery.fromEmail,
-			email,
-			mimeMessage,
-		);
-
 		try {
-			await c.env.SEND_EMAIL.send(emailMessage);
+			await createEmailClient(c.env).send({
+				from: c.env.config.accountRecovery.fromEmail,
+				to: email,
+				mimeMessage,
+			});
 		} catch (e) {
 			console.error("Failed to send recovery email:", e);
 			return c.json({ error: "Failed to send recovery email" }, 500);

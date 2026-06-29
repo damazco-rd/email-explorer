@@ -77,6 +77,25 @@ The project is a monorepo with two main parts: the backend worker and the fronte
     ```
     This will deploy the worker to Cloudflare.
 
+## Running Tests
+
+Before running tests, both the dashboard and the worker packages must be built. The integration test suite requires the compiled dashboard assets to be present.
+
+1. **Build the dashboard and worker:**
+    ```bash
+    pnpm run build
+    ```
+    Or build them individually:
+    ```bash
+    pnpm run build-dashboard
+    pnpm run build-worker
+    ```
+
+2. **Run the tests:**
+    ```bash
+    pnpm run test
+    ```
+
 ## Next Steps
 
 - **Implement Authentication:** The application currently has no authentication. This is a critical next step to secure user data.

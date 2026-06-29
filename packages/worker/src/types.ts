@@ -6,6 +6,7 @@ export interface EmailExplorerOptions {
 	accountRecovery?: {
 		fromEmail: string;
 	};
+	provider?: "cloudflare";
 }
 
 export interface Session {
