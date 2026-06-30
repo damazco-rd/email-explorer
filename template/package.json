@@ -8,7 +8,7 @@
 		"start": "wrangler dev"
 	},
 	"dependencies": {
-		"email-explorer": "^1.0.4"
+		"@damazco/email-explorer": "^1.2.0"
 	},
 	"devDependencies": {
 		"typescript": "5.9.3",
