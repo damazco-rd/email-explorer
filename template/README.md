@@ -1,6 +1,6 @@
 # My Personal Email Explorer
 
-This is my personal [Email Explorer](https://github.com/G4brym/email-explorer) application, self-hosted on my Cloudflare account.
+This is my personal [Email Explorer](https://github.com/damazco-rd/email-explorer) application, self-hosted on my Cloudflare account.
 
 ## Getting Started
 

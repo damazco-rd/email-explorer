@@ -10,13 +10,13 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/G4brym/email-explorer/commits/main" target="_blank">
-      <img src="https://img.shields.io/github/commit-activity/m/G4brym/email-explorer?label=Commits&style=social" alt="Email Explorer Commits">
+    <a href="https://github.com/damazco-rd/email-explorer/commits/main" target="_blank">
+      <img src="https://img.shields.io/github/commit-activity/m/damazco-rd/email-explorer?label=Commits&style=social" alt="Email Explorer Commits">
     </a>
-    <a href="https://github.com/G4brym/email-explorer/issues" target="_blank">
-      <img src="https://img.shields.io/github/issues/G4brym/email-explorer?style=social" alt="Issues">
+    <a href="https://github.com/damazco-rd/email-explorer/issues" target="_blank">
+      <img src="https://img.shields.io/github/issues/damazco-rd/email-explorer?style=social" alt="Issues">
     </a>
-    <a href="https://github.com/G4brym/email-explorer/blob/main/LICENSE" target="_blank">
+    <a href="https://github.com/damazco-rd/email-explorer/blob/main/LICENSE" target="_blank">
       <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=social" alt="Software License">
     </a>
 </p>
@@ -25,7 +25,7 @@
 
 Email Explorer is a full-stack, serverless email client that runs entirely on your own Cloudflare account. It provides a modern, fast, and secure way to manage your emails using Cloudflare's powerful infrastructure, including Workers, R2, Durable Objects, Email Routing, and Email Sending.
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/G4brym/email-explorer/tree/main/template)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/damazco-rd/email-explorer/tree/main/template)
 
 ## Table of Contents
 
@@ -141,14 +141,14 @@ Most of these services have generous free tiers that are sufficient for personal
 To deploy Email Explorer, you can use the "Deploy to Cloudflare" button above or run this command:
 
 ```bash
-npm create cloudflare@latest -- --template=https://github.com/G4brym/email-explorer/tree/main/template
+npm create cloudflare@latest -- --template=https://github.com/damazco-rd/email-explorer/tree/main/template
 ```
 
 **Or deploy manually:**
 
 ```bash
 # Clone the repository
-git clone https://github.com/G4brym/email-explorer.git
+git clone https://github.com/damazco-rd/email-explorer.git
 cd email-explorer
 
 # Install dependencies
@@ -378,7 +378,7 @@ See [ROADMAP.md](ROADMAP.md) for detailed planning and progress.
 - JavaScript must be enabled
 - Cookies must be enabled for authentication
 
-Please report any issues on our [GitHub Issues](https://github.com/G4brym/email-explorer/issues) page.
+Please report any issues on our [GitHub Issues](https://github.com/damazco-rd/email-explorer/issues) page.
 
 ## Security
 
@@ -416,7 +416,7 @@ For security vulnerabilities, please email security issues privately rather than
 We welcome contributions from the community! Here's how you can help:
 
 **🐛 Bug Reports**
-- Use the [GitHub Issues](https://github.com/G4brym/email-explorer/issues) page
+- Use the [GitHub Issues](https://github.com/damazco-rd/email-explorer/issues) page
 - Include reproduction steps
 - Specify your environment (browser, Cloudflare setup)
 
@@ -441,7 +441,7 @@ We welcome contributions from the community! Here's how you can help:
 **Development Setup:**
 ```bash
 # Clone the repository
-git clone https://github.com/G4brym/email-explorer.git
+git clone https://github.com/damazco-rd/email-explorer.git
 cd email-explorer
 
 # Install dependencies

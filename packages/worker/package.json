@@ -1,6 +1,6 @@
 {
 	"name": "@damazco/email-explorer",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "A self-hosted, serverless worker for sending and receiving emails on Cloudflare",
 	"scripts": {
 		"build": "tsup src/index.ts --format esm --external cloudflare:workers --external cloudflare:email --dts && cp -R ../dashboard/dist/ dashboard/ && cp ../../README.md . && cp ../../LICENSE .",
@@ -39,13 +39,13 @@
 	],
 	"author": "Gabriel Massadas",
 	"license": "MIT",
-	"homepage": "https://github.com/G4brym/email-explorer",
+	"homepage": "https://github.com/damazco-rd/email-explorer",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/G4brym/email-explorer.git"
+		"url": "git+https://github.com/damazco-rd/email-explorer.git"
 	},
 	"bugs": {
-		"url": "https://github.com/G4brym/email-explorer/issues"
+		"url": "https://github.com/damazco-rd/email-explorer/issues"
 	},
 	"dependencies": {
 		"chanfana": "2.8.3",

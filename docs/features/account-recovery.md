@@ -323,7 +323,7 @@ For issues or questions about Account Recovery:
 
 1. **Check this guide** - Most common issues are covered above
 2. **Review logs** - Check Cloudflare Worker logs for errors
-3. **GitHub Issues** - [Report issues on GitHub](https://github.com/G4brym/email-explorer/issues)
+3. **GitHub Issues** - [Report issues on GitHub](https://github.com/damazco-rd/email-explorer/issues)
 4. **Contact Admin** - Reach out to your Email Explorer administrator
 
 ---
