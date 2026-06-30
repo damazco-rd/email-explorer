@@ -2,6 +2,10 @@
 
 This document outlines the key aspects of the `email-explorer` project to facilitate understanding and future development.
 
+## Directives
+
+- **Base branch for PRs:** Do not use `main` as the base branch for pull requests. All new work, branches, and PR targets must be based off `fork` (or your preferred active branch).
+
 ## Project Overview
 
 `email-explorer` is a full-stack email client built on Cloudflare Workers. It provides a web-based dashboard for managing emails, including sending, receiving, and organizing them into folders. The backend is a Hono-based API that interacts with Cloudflare's email routing, R2 for storage, and Durable Objects for managing individual mailboxes.
