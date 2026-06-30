@@ -216,12 +216,32 @@ export default EmailExplorer({
 | `auth.enabled` | boolean | `true` | Enable/disable authentication |
 | `auth.registerEnabled` | boolean | `undefined` (smart mode) | Control user registration |
 | `accountRecovery.fromEmail` | string | `undefined` (disabled) | Enable password recovery via email |
+| `provider` | `"cloudflare"` \| `"resend"` | `"cloudflare"` | Email sending provider |
 
 **Account Recovery:**
 - When configured, users can reset forgotten passwords via email
 - The `fromEmail` address must be a valid email on your Cloudflare account
 - Requires [Cloudflare Email Sending](https://developers.cloudflare.com/email-routing/email-workers/send-email-workers/) to be enabled
 - See [Account Recovery Guide](docs/features/account-recovery.md) for more details
+
+**Email Provider — Resend:**
+
+By default Email Explorer sends outbound mail through Cloudflare Email Routing. To use [Resend](https://resend.com) instead, set `provider: "resend"` and add your API key as a Wrangler secret:
+
+```bash
+npx wrangler secret put RESEND_API_KEY
+```
+
+Then configure your worker:
+
+```typescript
+export default EmailExplorer({
+  provider: "resend",
+  auth: { enabled: true }
+})
+```
+
+When `provider` is `"resend"` the `SEND_EMAIL` Cloudflare binding is not required, so you can omit the `send_email` block from your `wrangler.jsonc` entirely.
 
 ### First-Time Setup
 
