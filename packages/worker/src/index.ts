@@ -547,7 +547,21 @@ class PostEmail extends OpenAPIRoute {
 		});
 
 		try {
-			await createEmailClient(c.env).send({ from, to: toStr, mimeMessage });
+			await createEmailClient(c.env).send({
+				from,
+				to: toStr,
+				mimeMessage,
+				subject,
+				html,
+				text,
+				attachments: attachments?.map((att) => ({
+					filename: att.filename,
+					content: att.content,
+					type: att.type,
+					disposition: att.disposition,
+					contentId: att.contentId,
+				})),
+			});
 		} catch (e) {
 			return c.json({ error: (e as Error).message }, 500);
 		}
@@ -1344,11 +1358,8 @@ class PostForgotPassword extends OpenAPIRoute {
 
 		// Send recovery email
 		const resetLink = `${new URL(c.req.url).origin}/reset-password?token=${token}`;
-		const mimeMessage = buildMimeMessage({
-			from: c.env.config.accountRecovery.fromEmail,
-			to: email,
-			subject: "Password Reset Request",
-			html: `<!DOCTYPE html>
+		const recoverySubject = "Password Reset Request";
+		const recoveryHtml = `<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -1380,8 +1391,8 @@ class PostForgotPassword extends OpenAPIRoute {
 		</div>
 	</div>
 </body>
-</html>`,
-			text: `Password Reset Request
+</html>`;
+		const recoveryText = `Password Reset Request
 
 We received a request to reset your password. Click the link below to proceed:
 
@@ -1389,7 +1400,13 @@ ${resetLink}
 
 This link will expire in 1 hour.
 
-If you didn't request this, you can safely ignore this email.`,
+If you didn't request this, you can safely ignore this email.`;
+		const mimeMessage = buildMimeMessage({
+			from: c.env.config.accountRecovery.fromEmail,
+			to: email,
+			subject: recoverySubject,
+			html: recoveryHtml,
+			text: recoveryText,
 		});
 
 		try {
@@ -1397,6 +1414,9 @@ If you didn't request this, you can safely ignore this email.`,
 				from: c.env.config.accountRecovery.fromEmail,
 				to: email,
 				mimeMessage,
+				subject: recoverySubject,
+				html: recoveryHtml,
+				text: recoveryText,
 			});
 		} catch (e) {
 			console.error("Failed to send recovery email:", e);

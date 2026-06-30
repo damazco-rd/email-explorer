@@ -1,3 +1,5 @@
+export type EmailProvider = "cloudflare" | "resend";
+
 export interface EmailExplorerOptions {
 	auth?: {
 		enabled?: boolean;
@@ -6,7 +8,7 @@ export interface EmailExplorerOptions {
 	accountRecovery?: {
 		fromEmail: string;
 	};
-	provider?: "cloudflare";
+	provider?: EmailProvider;
 }
 
 export interface Session {
@@ -28,6 +30,7 @@ export interface User {
 export type Env = {
 	MAILBOX: DurableObjectNamespace<import("./durableObject/index").MailboxDO>;
 	BUCKET: R2Bucket;
-	SEND_EMAIL: SendEmail;
+	SEND_EMAIL?: SendEmail;
+	RESEND_API_KEY?: string;
 	config?: EmailExplorerOptions;
 };

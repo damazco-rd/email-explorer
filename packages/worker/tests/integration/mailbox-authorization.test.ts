@@ -1,7 +1,8 @@
-import { env, SELF } from "cloudflare:test";
-import { describe, expect, it } from "vitest";
+import { env, SELF, reset } from "cloudflare:test";
+import { describe, expect, it, beforeEach } from "vitest";
 
 describe("Mailbox Authorization Regression Tests (Issue #19)", () => {
+	beforeEach(reset);
 	// Helper to make authenticated request
 	const authenticatedFetch = (
 		url: string,

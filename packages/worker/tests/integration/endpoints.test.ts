@@ -1,11 +1,14 @@
-import { describe, expect, it, beforeAll } from "vitest";
+import { describe, expect, it, beforeEach } from "vitest";
+import { reset } from "cloudflare:test";
 import {authenticatedFetch, createMailbox, mailboxId, testAuthBeforeAll} from "./utils";
 
 
 
 describe("API Integration Tests", () => {
-	// Setup authentication once for all tests
-	beforeAll(testAuthBeforeAll);
+	beforeEach(async () => {
+		await reset();
+		await testAuthBeforeAll();
+	});
 
 	// Tests for Mailboxes
 	describe("Mailboxes API", () => {

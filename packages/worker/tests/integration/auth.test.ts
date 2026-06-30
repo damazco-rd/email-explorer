@@ -1,7 +1,8 @@
-import { SELF, env } from "cloudflare:test";
+import { SELF, env, reset } from "cloudflare:test";
 import { describe, expect, it, beforeEach } from "vitest";
 
 describe("Authentication & User Management Integration Tests", () => {
+	beforeEach(reset);
 	// Helper to create worker instance with auth enabled
 	const createAuthWorker = async (authConfig = { enabled: true }) => {
 		// The worker will use the config from index.ts

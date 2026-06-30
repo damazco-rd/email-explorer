@@ -1,4 +1,4 @@
-import { env, createExecutionContext } from "cloudflare:test";
+import { env, createExecutionContext, reset } from "cloudflare:test";
 import { describe, expect, it, beforeEach } from "vitest";
 import { authenticatedFetch, mailboxId, testAuthBeforeAll } from "./utils";
 
@@ -32,6 +32,7 @@ async function simulateReceiveEmail(rawEmailStr: string) {
 
 describe("Incoming Email Threading Tests", () => {
 	beforeEach(async () => {
+		await reset();
 		await testAuthBeforeAll();
 		await authenticatedFetch("http://local.test/api/v1/debug/create-mailbox", { method: "POST" });
 	});

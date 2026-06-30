@@ -1,5 +1,5 @@
 {
-	"name": "email-explorer-dev-worker",
+	"name": "@damazco/email-explorer-dev-worker",
 	"devDependencies": {
 		"email-explorer": "workspace:*",
 		"wrangler": "^4.53.0"
