@@ -13,7 +13,7 @@ export default EmailExplorer({
 		// registerEnabled not specified = smart mode
 	},
 	accountRecovery: {
-		fromEmail: 'noreply@damaz.co',
+		fromEmail: "noreply@damaz.co",
 	},
 });
 

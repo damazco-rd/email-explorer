@@ -123,7 +123,21 @@ export class PostReplyEmail extends OpenAPIRoute {
 		});
 
 		try {
-			await createEmailClient(c.env).send({ from, to: toStr, mimeMessage });
+			await createEmailClient(c.env).send({
+				from,
+				to: toStr,
+				mimeMessage,
+				subject,
+				html,
+				text,
+				attachments: attachments?.map((att) => ({
+					filename: att.filename,
+					content: att.content,
+					type: att.type,
+					disposition: att.disposition,
+					contentId: att.contentId,
+				})),
+			});
 		} catch (e) {
 			return c.json({ error: (e as Error).message }, 500);
 		}
@@ -238,7 +252,21 @@ export class PostForwardEmail extends OpenAPIRoute {
 		});
 
 		try {
-			await createEmailClient(c.env).send({ from, to: toStr, mimeMessage });
+			await createEmailClient(c.env).send({
+				from,
+				to: toStr,
+				mimeMessage,
+				subject,
+				html,
+				text,
+				attachments: attachments?.map((att) => ({
+					filename: att.filename,
+					content: att.content,
+					type: att.type,
+					disposition: att.disposition,
+					contentId: att.contentId,
+				})),
+			});
 		} catch (e) {
 			return c.json({ error: (e as Error).message }, 500);
 		}

@@ -1,27 +1,28 @@
-import { defineWorkersConfig } from "@cloudflare/vitest-pool-workers/config";
+import { defineConfig } from "vitest/config";
+import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
 
-export default defineWorkersConfig({
+export default defineConfig({
 	esbuild: {
 		target: "esnext",
 	},
-	test: {
-		poolOptions: {
-			workers: {
-				singleWorker: true,
-				wrangler: {
-					configPath: "../dev/wrangler.jsonc",
-				},
-				miniflare: {
-					r2Persist: false,
-					isolatedStorage: true,
-					compatibilityFlags: ["nodejs_compat", "nodejs_als"],
-					serviceBindings: {
-						async SEND_EMAIL() {
-							return {};
-						},
+	plugins: [
+		cloudflareTest({
+			wrangler: { configPath: "./dev/wrangler.jsonc", },
+			miniflare: {
+				r2Persist: false,
+				compatibilityFlags: ["nodejs_compat", "nodejs_als"],
+				serviceBindings: {
+					async SEND_EMAIL() {
+						return {};
 					},
 				},
 			},
+		}),
+	],
+	test: {
+		globalSetup: ["./tests/globalSetup.ts"],
+		coverage: {
+			provider: "istanbul"
 		},
 	},
 });
