@@ -1,7 +1,7 @@
-import { EmailMessage } from "cloudflare:email";
 import { contentJson, OpenAPIRoute } from "chanfana";
 import type { Context } from "hono";
 import { z } from "zod";
+import { createEmailClient } from "../email-client";
 import { buildMimeMessage } from "../mime-builder";
 import type { Env, Session } from "../types";
 
@@ -122,10 +122,8 @@ export class PostReplyEmail extends OpenAPIRoute {
 			references: references,
 		});
 
-		const message = new EmailMessage(from, toStr, mimeMessage);
-
 		try {
-			await c.env.SEND_EMAIL.send(message);
+			await createEmailClient(c.env).send({ from, to: toStr, mimeMessage });
 		} catch (e) {
 			return c.json({ error: (e as Error).message }, 500);
 		}
@@ -239,10 +237,8 @@ export class PostForwardEmail extends OpenAPIRoute {
 			})),
 		});
 
-		const message = new EmailMessage(from, toStr, mimeMessage);
-
 		try {
-			await c.env.SEND_EMAIL.send(message);
+			await createEmailClient(c.env).send({ from, to: toStr, mimeMessage });
 		} catch (e) {
 			return c.json({ error: (e as Error).message }, 500);
 		}
