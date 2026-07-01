@@ -13,7 +13,7 @@
 	},
 	"compatibility_flags": ["nodejs_compat", "enable_email_sending_queuing"],
 	"assets": {
-		"directory": "node_modules/email-explorer/dashboard",
+		"directory": "node_modules/@damazco/email-explorer/dashboard",
 		"binding": "ASSETS",
 		"html_handling": "auto-trailing-slash",
 		"not_found_handling": "single-page-application",
