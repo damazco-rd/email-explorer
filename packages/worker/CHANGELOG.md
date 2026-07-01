@@ -1,5 +1,11 @@
 # email-explorer
 
+## 1.2.1
+
+### Patch Changes
+
+- [#3](https://github.com/damazco-rd/email-explorer/pull/3) [`781d6ec`](https://github.com/damazco-rd/email-explorer/commit/781d6ecf69200689d7ea5b2364cac0d82f963d80) Thanks [@edersonmf](https://github.com/edersonmf)! - Rename assets location to follow the new package name
+
 ## 1.2.0
 
 ### Minor Changes
